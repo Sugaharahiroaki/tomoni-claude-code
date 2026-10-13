@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code 勉強会｜作りたいものを、一緒に形に。｜TOMONI</title>
+<meta name="description" content="仕事でも趣味でも、作りたいものをAIと一緒に形にする1対1の勉強会。全12回・1回90分、基礎学習の2回は無料。">
+<meta name="theme-color" content="#F3EFE6">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TOMONI">
+<meta property="og:title" content="Claude Code 勉強会｜作りたいものを、一緒に形に。">
+<meta property="og:description" content="仕事でも趣味でも、作りたいものをAIと一緒に形にする1対1の勉強会。基礎学習の2回は無料。">
+<meta property="og:url" content="https://sugaharahiroaki.github.io/tomoni-claude-code/">
+<meta property="og:image" content="https://sugaharahiroaki.github.io/tomoni-claude-code/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&amp;family=Zen+Kaku+Gothic+New:wght@400;700;900&amp;display=swap" rel="stylesheet">
+<style>
+:root{--accent:#C94A1F}
+html{scroll-behavior:smooth}
+body{margin:0;background:#F3EFE6;color:#1E1C19;font-family:'Zen Kaku Gothic New','Hiragino Sans',sans-serif;line-height:1.7}
+a{color:#C94A1F}a:hover{color:#9E3512}
+.wrap{background:#F3EFE6;overflow-x:clip}
+.cc-paper{background-color:#F3EFE6;background-image:linear-gradient(rgba(47,95,208,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(47,95,208,.07) 1px,transparent 1px);background-size:28px 28px}
+.cc-hand{font-family:'Klee One',cursive;font-weight:600}
+.cc-stage{position:sticky;top:0;height:min(100svh,900px);overflow:hidden}
+.cc-hero-row{display:flex;align-items:center;justify-content:center;gap:clamp(24px,6vw,96px);height:100%;padding:72px clamp(16px,4vw,48px) 24px;box-sizing:border-box}
+.cc-hero-text{position:relative;flex:0 1 560px;height:340px}
+.cc-sketch-wrap{position:relative;width:280px;height:560px;flex:none}
+.cc-stack{position:sticky}
+.cc-h1{margin:0;font-weight:900;font-size:clamp(36px,4.6vw,64px);line-height:1.3}
+.cc-scene{position:absolute;left:0;right:0;top:0}
+.cc-note{position:absolute;color:#2F5FD0;font-size:16px;line-height:1.5;opacity:0}
+@keyframes ccbob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+.cc-bob{animation:ccbob 1.8s ease-in-out infinite}
+@supports (animation-timeline: view()){
+.cc-rv{animation:ccrv linear both;animation-timeline:view();animation-range:entry 0% cover 28%}
+@keyframes ccrv{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+}
+.idea{flex:none;width:260px;height:320px;box-sizing:border-box;padding:26px;border-radius:18px;display:flex;flex-direction:column;color:#1E1C19;border:1px solid #DCD5C7}
+.idea:nth-child(odd){transform:rotate(-1.2deg)}
+.idea:nth-child(even){transform:rotate(1.2deg)}
+.idea.work{background:#F3EFE6}
+.idea.life{background:#FFFFFF}
+.idea.you{background:transparent;color:#F3EFE6;border:2px dashed #8A8276}
+.idea .tag{align-self:flex-start;padding:2px 12px;border-radius:999px;font-size:12px;font-weight:700;color:#FFFFFF}
+.work .tag{background:#1E1C19}.life .tag{background:#2F5FD0}.you .tag{background:var(--accent)}
+.idea .key{margin-top:22px;font-size:54px;line-height:1.1}
+.work .key{color:var(--accent)}.life .key{color:#2F5FD0}.you .key{color:#F2B596}
+.idea .ttl{margin-top:auto;font-weight:900;font-size:20px;line-height:1.4}
+.idea .desc{margin-top:6px;font-size:14px;opacity:.8}
+.sess{position:relative;padding:22px 22px 22px 84px;min-height:84px;box-sizing:border-box;border-radius:14px;background:rgba(255,255,255,.75);border:1px solid #DCD5C7}
+.sess svg{position:absolute;left:16px;top:14px;overflow:visible}
+.sess .num{position:absolute;left:16px;top:14px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#8A8276}
+.sess .no{font-size:12px;color:#6B655C}
+.sess .th{font-weight:700;font-size:16px}
+#cc-words span{color:#CFC8BC;transition:color .25s}
+.step{padding:28px;border-radius:18px;background:#FFFFFF;border:1px solid #DCD5C7}
+.eyebrow{margin:0 0 24px;font-size:13px;font-weight:700;letter-spacing:.3em;color:var(--accent)}
+.sec-h{margin:0;font-weight:900;font-size:clamp(30px,4.4vw,56px);line-height:1.4}
+@media (max-width:860px){
+.cc-navlink,.cc-tagline{display:none}
+.cc-hero-row{flex-direction:column;justify-content:flex-start;gap:0;padding-top:76px}
+.cc-hero-text{flex:none;width:100%;height:230px}
+.cc-sketch-wrap{transform:scale(.58);transform-origin:top center;margin-top:4px}
+.cc-h1{font-size:34px}
+.cc-hero-sub{font-size:14px !important}
+.cc-chapters{display:none !important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header style="position: fixed; top: 0; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px clamp(16px, 4vw, 48px); background: rgba(243,239,230,.88); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid #DCD5C7">
+<a href="#top" style="display: flex; align-items: baseline; gap: 10px; color: #1E1C19; text-decoration: none">
+<span style="font-weight: 900; font-size: 17px">Claude Code 勉強会</span>
+<span class="cc-hand cc-tagline" style="font-size: 13px; color: #2F5FD0">一緒に、形にする。</span>
+</a>
+<nav style="display: flex; align-items: center; gap: 24px; font-size: 14px">
+<a href="#ideas" class="cc-navlink" style="color: #6B655C; text-decoration: none">作れるもの</a>
+<a href="#course" class="cc-navlink" style="color: #6B655C; text-decoration: none">全12回</a>
+<a href="#join" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: var(--accent); color: #FFFFFF; font-weight: 700; text-decoration: none">相談する</a>
+</nav>
+</header>
+
+<main>
+<section id="cc-hero" class="cc-paper" style="position: relative; height: 3400px">
+<div id="top" class="cc-stage">
+<div class="cc-hero-row">
+
+<div class="cc-hero-text">
+<div class="cc-chapters" style="display: flex; gap: 20px; margin-bottom: 28px; font-size: 13px; font-weight: 700; color: var(--accent)">
+<span id="c0">01 思いつく</span>
+<span id="c1" style="opacity: .35">02 描いてみる</span>
+<span id="c2" style="opacity: .35">03 動かす</span>
+</div>
+<div style="position: relative">
+<div id="t0" class="cc-scene">
+<h1 class="cc-h1">思いついた、<br>小さな「欲しい」。</h1>
+<p class="cc-hand cc-hero-sub" style="margin: 18px 0 0; font-size: 20px; color: #2F5FD0">「経費精算、毎月めんどうなんだよな…」</p>
+</div>
+<div id="t1" class="cc-scene" style="opacity: 0; transform: translateY(24px)">
+<h2 class="cc-h1">一緒に、<br>描いてみる。</h2>
+<p class="cc-hero-sub" style="margin: 18px 0 0; font-size: 17px; color: #4A453E">どんな画面がいい？何が残ればいい？<br>話しながら、作るものの形を決めていきます。</p>
+</div>
+<div id="t2" class="cc-scene" style="opacity: 0; transform: translateY(24px)">
+<h2 class="cc-h1">そして、<br>動きだす。</h2>
+<p class="cc-hero-sub" style="margin: 18px 0 0; font-size: 17px; color: #4A453E">Claude Codeに日本語で頼みながら、<br>本当に使えるアプリに仕上げます。</p>
+</div>
+</div>
+</div>
+
+<div class="cc-sketch-wrap">
+<svg id="sketch" aria-hidden="true" width="280" height="560" viewBox="0 0 280 560" fill="none" stroke="#1E1C19" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; inset: 0; overflow: visible">
+<path d="M24 6 Q140 2 256 8 Q274 10 274 30 L272 530 Q272 552 250 553 Q140 557 28 552 Q6 550 7 528 L9 30 Q9 8 24 6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></path>
+<path d="M30 70 Q140 66 250 71" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></path>
+<path d="M34 42 Q70 38 118 44" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></path>
+<path d="M140 98 C180 97 206 128 205 162 C204 198 176 224 139 223 C102 222 76 196 76 160 C77 126 104 97 144 100" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></path>
+<path d="M116 162 Q140 156 164 162" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></path>
+<path d="M30 262 Q140 258 250 263" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></path>
+<path d="M30 304 Q140 300 250 305" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></path>
+<path d="M30 346 Q140 343 250 347" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></path>
+<path d="M30 400 Q140 396 250 401 L249 470 Q140 474 31 469 Z" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"></path>
+</svg>
+
+<div id="n0" class="cc-hand cc-note" style="left: 218px; top: 120px; width: 170px">
+<svg aria-hidden="true" width="60" height="30" viewBox="0 0 60 30" fill="none" stroke="#2F5FD0" stroke-width="2" stroke-linecap="round" style="display: block; margin-left: -40px"><path d="M58 6 Q30 2 6 22 M6 22 L16 20 M6 22 L8 12"></path></svg>
+ここを押したら<br>レシートを撮影
+</div>
+<div id="n1" class="cc-hand cc-note" style="left: -178px; top: 300px; width: 160px; text-align: right">
+日付と金額が<br>一覧になる
+<svg aria-hidden="true" width="60" height="30" viewBox="0 0 60 30" fill="none" stroke="#2F5FD0" stroke-width="2" stroke-linecap="round" style="display: block; margin-left: auto; margin-right: -46px"><path d="M2 6 Q30 2 54 22 M54 22 L44 20 M54 22 L52 12"></path></svg>
+</div>
+<div id="n2" class="cc-hand cc-note" style="left: 226px; top: 440px; width: 170px">
+<svg aria-hidden="true" width="60" height="30" viewBox="0 0 60 30" fill="none" stroke="#2F5FD0" stroke-width="2" stroke-linecap="round" style="display: block; margin-left: -44px"><path d="M58 6 Q30 2 6 22 M6 22 L16 20 M6 22 L8 12"></path></svg>
+月末に合計を<br>LINEでお知らせ
+</div>
+
+<div id="ui" aria-hidden="true" style="position: absolute; inset: 0; border-radius: 30px; border: 2px solid #1E1C19; background: #FFFFFF; overflow: hidden; opacity: 0; transform: scale(.94); box-shadow: 0 30px 60px rgba(30,28,25,.18)">
+<div style="padding: 26px 22px 14px; border-bottom: 1px solid #E8E2D6">
+<div style="font-size: 11px; color: #6B655C">毎月の経費</div>
+<div style="font-weight: 900; font-size: 20px">経費メモ</div>
+</div>
+<div style="display: flex; justify-content: center; padding: 26px 0 18px">
+<div style="width: 124px; height: 124px; border-radius: 50%; background: var(--accent); color: #FFFFFF; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 700; box-shadow: 0 10px 24px rgba(201,74,31,.35)">
+<svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 H7 L9 5 H15 L17 8 H20 V19 H4 Z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>
+<span style="font-size: 14px; margin-top: 4px">レシートを撮る</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 0 18px; font-size: 13px">
+<div style="display: flex; justify-content: space-between; padding: 10px 12px; border-radius: 10px; background: #F3EFE6"><span>10/12 タクシー</span><span>¥1,840</span></div>
+<div style="display: flex; justify-content: space-between; padding: 10px 12px; border-radius: 10px; background: #F3EFE6"><span>10/10 打ち合わせ</span><span>¥2,200</span></div>
+<div style="display: flex; justify-content: space-between; padding: 10px 12px; border-radius: 10px; background: #F3EFE6"><span>10/08 文具</span><span>¥660</span></div>
+</div>
+<div style="margin: 16px 18px 0; padding: 12px; border-radius: 10px; border: 1px solid #E8E2D6; display: flex; align-items: baseline; justify-content: space-between; gap: 8px">
+<span style="font-size: 11px; color: #6B655C">今月の合計（12件）</span>
+<span style="font-weight: 900; font-size: 18px; color: var(--accent)">¥18,420</span>
+</div>
+</div>
+
+<div id="bub" aria-hidden="true" style="position: absolute; left: 50%; top: -34px; width: 250px; margin-left: -125px; display: flex; align-items: center; gap: 10px; padding: 10px 14px; box-sizing: border-box; border-radius: 14px; background: #1E1C19; color: #FFFFFF; font-size: 13px; box-shadow: 0 14px 30px rgba(30,28,25,.3); opacity: 0; transform: translateY(16px) scale(.85)">
+<span style="flex: none; padding: 2px 8px; border-radius: 6px; background: #4CC764; color: #0B2A12; font-size: 11px; font-weight: 700">LINE</span>
+<span>今月の経費：12件・¥18,420</span>
+</div>
+</div>
+
+</div>
+
+<div id="hint" class="cc-bob" aria-hidden="true" style="position: absolute; left: 50%; bottom: 24px; margin-left: -40px; width: 80px; text-align: center; font-size: 12px; letter-spacing: .2em; color: #6B655C">
+SCROLL
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="display: block; margin: 6px auto 0"><path d="M6 9l6 6 6-6"></path></svg>
+</div>
+</div>
+</section>
+
+<section id="ideas" style="position: relative; height: 2600px; background: #1E1C19; color: #F3EFE6">
+<div class="cc-stage" style="display: flex; flex-direction: column; justify-content: center; gap: 40px">
+<div style="padding: 0 clamp(16px, 4vw, 48px)">
+<p class="cc-hand" style="margin: 0 0 8px; font-size: 18px; color: #F2B596">作るものに、決まりはありません。</p>
+<h2 style="margin: 0; font-weight: 900; font-size: clamp(32px, 5vw, 64px); line-height: 1.3">仕事でも、趣味でも。</h2>
+</div>
+<div id="cc-row" style="display: flex; gap: 24px; padding: 0 clamp(16px, 4vw, 48px); width: max-content">
+<div class="idea work"><span class="tag">仕事</span><span class="key cc-hand">日報</span><span class="ttl">日報のたたき台</span><span class="desc">箇条書きのメモから、いつもの形に</span></div>
+<div class="idea life"><span class="tag">趣味・くらし</span><span class="key cc-hand">家計</span><span class="ttl">家計簿</span><span class="desc">固定費とサブスクが、ひと目でわかる</span></div>
+<div class="idea work"><span class="tag">仕事</span><span class="key cc-hand">集計</span><span class="ttl">毎月のExcel集計</span><span class="desc">コピペと転記から卒業する</span></div>
+<div class="idea life"><span class="tag">趣味・くらし</span><span class="key cc-hand">資格</span><span class="ttl">資格の勉強アプリ</span><span class="desc">通勤時間に、自分専用の問題集</span></div>
+<div class="idea work"><span class="tag">仕事</span><span class="key cc-hand">メール</span><span class="ttl">定型メールの下書き</span><span class="desc">いつもの連絡文を、ボタンひとつで</span></div>
+<div class="idea life"><span class="tag">趣味・くらし</span><span class="key cc-hand">予定</span><span class="ttl">家族の予定共有</span><span class="desc">送り迎えも行事も、ひとつに</span></div>
+<div class="idea work"><span class="tag">仕事</span><span class="key cc-hand">残業</span><span class="ttl">残業時間の記録</span><span class="desc">今月あと何時間か、すぐわかる</span></div>
+<div class="idea life"><span class="tag">趣味・くらし</span><span class="key cc-hand">読書</span><span class="ttl">読書メモ</span><span class="desc">読んだ本と、残したい一言を</span></div>
+<div class="idea you"><span class="tag">あなた</span><span class="key cc-hand">？</span><span class="ttl">あなたの作りたいもの</span><span class="desc">ぼんやりでも、まずは聞かせてください</span></div>
+</div>
+</div>
+</section>
+
+<section id="cc-concept" style="max-width: 1040px; margin: 0 auto; padding: 180px clamp(16px, 4vw, 48px) 160px">
+<p class="eyebrow cc-rv">CONCEPT</p>
+<h2 class="sec-h cc-rv" style="margin-bottom: 48px">教わるのではなく、<br>一緒に作る。</h2>
+<p id="cc-words" style="margin: 0; font-weight: 700; font-size: clamp(22px, 2.8vw, 34px); line-height: 1.9"><span>AIの使い方を習っても、</span><span>自分の作りたいものと</span><span>つながらなければ、</span><span>手は止まってしまう。</span><span>だからこの勉強会では、</span><span>教科書の課題ではなく、</span><span>あなたが作りたいものを</span><span>題材にします。</span><span>隣で一緒に手を動かして、</span><span>完成まで伴走します。</span></p>
+</section>
+
+<section id="works" style="background: #FFFFFF; border-top: 1px solid #DCD5C7; border-bottom: 1px solid #DCD5C7">
+<div style="max-width: 1040px; margin: 0 auto; padding: 140px clamp(16px, 4vw, 48px) 160px">
+<p class="eyebrow cc-rv">WORKS</p>
+<h2 class="sec-h cc-rv">講師も、<br>自分が欲しいものから始めた。</h2>
+<p class="cc-rv" style="margin: 20px 0 64px; font-size: 16px; color: #4A453E; max-width: 34em">飲食店を営みながら、Claude Codeと一緒に作ってきたものです。最初の一つは、自分の店で使いたいアプリでした。</p>
+
+<div style="display: flex; flex-direction: column; gap: 40px">
+<div class="cc-stack" style="top: 96px; min-height: 300px; box-sizing: border-box; padding: clamp(24px, 4vw, 44px); border-radius: 22px; background: #F3EFE6; border: 1px solid #DCD5C7; box-shadow: 0 -10px 30px rgba(30,28,25,.06)">
+<div style="display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: baseline">
+<span class="cc-hand" style="font-size: 40px; color: var(--accent)">01</span>
+<h3 style="margin: 0; font-weight: 900; font-size: clamp(24px, 3vw, 34px)">Mise Miru</h3>
+<span style="font-size: 14px; color: #6B655C">店舗運営アプリ</span>
+</div>
+<p style="margin: 18px 0 0; font-size: 16px; color: #4A453E; max-width: 36em">使っていたアプリでは欲しい分析ができず、毎月手計算でExcelに転記していた。その「欲しい」から自分で作り、今では他の法人にも使われています。</p>
+</div>
+<div class="cc-stack" style="top: 124px; min-height: 300px; box-sizing: border-box; padding: clamp(24px, 4vw, 44px); border-radius: 22px; background: #FFFFFF; border: 1px solid #DCD5C7; box-shadow: 0 -10px 30px rgba(30,28,25,.08)">
+<div style="display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: baseline">
+<span class="cc-hand" style="font-size: 40px; color: var(--accent)">02</span>
+<h3 style="margin: 0; font-weight: 900; font-size: clamp(24px, 3vw, 34px)">店舗KPIナビ</h3>
+<span style="font-size: 14px; color: #6B655C">数字を見るWebアプリ</span>
+</div>
+<p style="margin: 18px 0 0; font-size: 16px; color: #4A453E; max-width: 36em">水道光熱費などの数字を管理する仕組み。サーバーの用意から自動で更新されるところまで、Claude Codeと組み上げました。</p>
+</div>
+<div class="cc-stack" style="top: 152px; min-height: 300px; box-sizing: border-box; padding: clamp(24px, 4vw, 44px); border-radius: 22px; background: #2F5FD0; color: #FFFFFF; box-shadow: 0 -10px 30px rgba(30,28,25,.12)">
+<div style="display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: baseline">
+<span class="cc-hand" style="font-size: 40px; color: #FFD9C7">03</span>
+<h3 style="margin: 0; font-weight: 900; font-size: clamp(24px, 3vw, 34px)">動画の自動制作・投稿</h3>
+<span style="font-size: 14px; color: #D6E0F7">台本から投稿まで</span>
+</div>
+<p style="margin: 18px 0 0; font-size: 16px; color: #EAF0FC; max-width: 36em">台本づくり、AIアバターでの動画生成、SNSへの投稿までをつないだ仕組み。人がやるのは、スマホで「承認」を押すだけです。</p>
+</div>
+<div class="cc-stack" style="top: 180px; min-height: 300px; box-sizing: border-box; padding: clamp(24px, 4vw, 44px); border-radius: 22px; background: #1E1C19; color: #F3EFE6; box-shadow: 0 -10px 30px rgba(30,28,25,.16)">
+<div style="display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: baseline">
+<span class="cc-hand" style="font-size: 40px; color: #F2B596">04</span>
+<h3 style="margin: 0; font-weight: 900; font-size: clamp(24px, 3vw, 34px)">不具合報告の自動整理</h3>
+<span style="font-size: 14px; color: #BDB5A8">アプリの運営を楽に</span>
+</div>
+<p style="margin: 18px 0 0; font-size: 16px; color: #DDD6CB; max-width: 36em">利用者からLINEで届いた報告を整理し、Claude Codeが原因を調べて修正案まで作る。作ったものを育てる仕組みも、自分で作っています。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="course" class="cc-paper">
+<div style="max-width: 1120px; margin: 0 auto; padding: 140px clamp(16px, 4vw, 48px)">
+<p class="eyebrow cc-rv">12 SESSIONS</p>
+<h2 class="sec-h cc-rv" style="margin-bottom: 56px">全12回で、<br>作りたいものが動くまで。</h2>
+<div id="cc-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 16px">
+<div class="sess"><svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 4 C42 3 53 14 52 29 C51 43 40 53 27 52 C13 51 3 41 4 27 C5 14 15 5 31 6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" stroke="#C94A1F" stroke-width="2.6" stroke-linecap="round"></path></svg><span class="num cc-hand">1</span><div class="no">第1回</div><div class="th">基礎学習①（動画・無料）</div></div>
+<div class="sess"><svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 4 C42 3 53 14 52 29 C51 43 40 53 27 52 C13 51 3 41 4 27 C5 14 15 5 31 6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" stroke="#C94A1F" stroke-width="2.6" stroke-linecap="round"></path></svg><span class="num cc-hand">2</span><div class="no">第2回</div><div class="th">基礎学習②（動画・無料）</div></div>
+<div class="sess"><svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 4 C42 3 53 14 52 29 C51 43 40 53 27 52 C13 51 3 41 4 27 C5 14 15 5 31 6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" stroke="#C94A1F" stroke-width="2.6" stroke-linecap="round"></path></svg><span class="num cc-hand">3</span><div class="no">第3回</div><div class="th">あなたに合わせて組み立て</div></div>
+<div class="sess"><svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 4 C42 3 53 14 52 29 C51 43 40 53 27 52 C13 51 3 41 4 27 C5 14 15 5 31 6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" stroke="#C94A1F" stroke-width="2.6" stroke-linecap="round"></path></svg><span class="num cc-hand">4</span><div class="no">第4回</div><div class="th">あなたに合わせて組み立て</div></div>
+<div class="sess"><svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 4 C42 3 53 14 52 29 C51 43 40 53 27 52 C13 51 3 41 4 27 C5 14 15 5 31 6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" stroke="#C94A1F" stroke-width="2.6" stroke-linecap="round"></path></svg><span class="num cc-hand">5</span><div class="no">第5回</div><div class="th">あなたに合わせて組み立て</div></div>
+<div class="sess"><svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 4 C42 3 53 14 52 29 C51 43 40 53 27 52 C13 51 3 41 4 27 C5 14 15 5 31 6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" stroke="#C94A1F" stroke-width="2.6" stroke-linecap="round"></path></svg><span class="num cc-hand">6</span><div class="no">第6回</div><div class="th">あなたに合わせて組み立て</div></div>
+<div class="sess"><svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 4 C42 3 53 14 52 29 C51 43 40 53 27 52 C13 51 3 41 4 27 C5 14 15 5 31 6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" stroke="#C94A1F" stroke-width="2.6" stroke-linecap="round"></path></svg><span class="num cc-hand">7</span><div class="no">第7回</div><div class="th">あなたに合わせて組み立て</div></div>
+<div class="sess"><svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 4 C42 3 53 14 52 29 C51 43 40 53 27 52 C13 51 3 41 4 27 C5 14 15 5 31 6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" stroke="#C94A1F" stroke-width="2.6" stroke-linecap="round"></path></svg><span class="num cc-hand">8</span><div class="no">第8回</div><div class="th">あなたに合わせて組み立て</div></div>
+<div class="sess"><svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 4 C42 3 53 14 52 29 C51 43 40 53 27 52 C13 51 3 41 4 27 C5 14 15 5 31 6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" stroke="#C94A1F" stroke-width="2.6" stroke-linecap="round"></path></svg><span class="num cc-hand">9</span><div class="no">第9回</div><div class="th">あなたに合わせて組み立て</div></div>
+<div class="sess"><svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 4 C42 3 53 14 52 29 C51 43 40 53 27 52 C13 51 3 41 4 27 C5 14 15 5 31 6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" stroke="#C94A1F" stroke-width="2.6" stroke-linecap="round"></path></svg><span class="num cc-hand">10</span><div class="no">第10回</div><div class="th">あなたに合わせて組み立て</div></div>
+<div class="sess"><svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 4 C42 3 53 14 52 29 C51 43 40 53 27 52 C13 51 3 41 4 27 C5 14 15 5 31 6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" stroke="#C94A1F" stroke-width="2.6" stroke-linecap="round"></path></svg><span class="num cc-hand">11</span><div class="no">第11回</div><div class="th">あなたに合わせて組み立て</div></div>
+<div class="sess"><svg aria-hidden="true" width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 4 C42 3 53 14 52 29 C51 43 40 53 27 52 C13 51 3 41 4 27 C5 14 15 5 31 6" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" stroke="#C94A1F" stroke-width="2.6" stroke-linecap="round"></path></svg><span class="num cc-hand">12</span><div class="no">第12回</div><div class="th">あなたに合わせて組み立て</div></div>
+</div>
+<div class="cc-rv" style="margin-top: 40px; padding: 28px 32px; border-radius: 18px; background: #1E1C19; color: #F3EFE6; display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center">
+<span class="cc-hand" style="font-size: 24px; color: #F2B596">ここがポイント</span>
+<span style="flex: 1 1 360px; font-size: 16px">最初の2回は基礎学習（無料）。7本の動画で、Claude Codeの使い方と安全な使い方を身につけます。3回目からの10回は、あなたの作りたいものに合わせて組み立てます。事前ヒアリングで、作りたいものと今のレベルをうかがいます。</span>
+</div>
+</div>
+</section>
+
+<section style="max-width: 1120px; margin: 0 auto; padding: 140px clamp(16px, 4vw, 48px)">
+<p class="eyebrow cc-rv">HOW IT WORKS</p>
+<h2 class="sec-h cc-rv" style="margin-bottom: 48px">はじめるまで、3ステップ。</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px">
+<div class="step cc-rv">
+<p class="cc-hand" style="margin: 0; font-size: 36px; color: var(--accent)">1</p>
+<p style="margin: 6px 0 8px; font-weight: 900; font-size: 19px">作りたいものを教える</p>
+<p style="margin: 0; font-size: 15px; color: #4A453E">事前ヒアリングのフォームに、作りたいもの（ぼんやりでもOK）と今のレベルを書いてください。</p>
+</div>
+<div class="step cc-rv">
+<p class="cc-hand" style="margin: 0; font-size: 36px; color: var(--accent)">2</p>
+<p style="margin: 6px 0 8px; font-weight: 900; font-size: 19px">日程を選んで予約</p>
+<p style="margin: 0; font-size: 15px; color: #4A453E">届いた候補日から、都合のいい日時を選ぶだけで予約が完了します。</p>
+</div>
+<div class="step cc-rv">
+<p class="cc-hand" style="margin: 0; font-size: 36px; color: var(--accent)">3</p>
+<p style="margin: 6px 0 8px; font-weight: 900; font-size: 19px">1対1で、一緒に作る</p>
+<p style="margin: 0; font-size: 15px; color: #4A453E">Google Meetで1回90分。画面を共有しながら、隣で一緒に手を動かします。</p>
+</div>
+</div>
+</section>
+
+<section id="join" style="background: #1E1C19; color: #F3EFE6">
+<div style="max-width: 880px; margin: 0 auto; padding: 140px clamp(16px, 4vw, 48px); text-align: center">
+<h2 class="cc-rv" style="margin: 0; font-weight: 900; font-size: clamp(28px, 4vw, 48px); line-height: 1.5">あなたの「作れたらな」を、<br>書いてみてください。</h2>
+<div class="cc-rv" style="margin: 48px auto 0; max-width: 560px; text-align: left">
+<label for="cc-idea" style="display: block; font-size: 14px; font-weight: 700; color: #BDB5A8; margin-bottom: 8px">作りたいもの</label>
+<input id="cc-idea" type="text" placeholder="例：経費精算をラクにするアプリ" style="width: 100%; box-sizing: border-box; min-height: 56px; padding: 0 18px; border-radius: 12px; border: 2px solid #4A453E; background: #2A2723; color: #F3EFE6; font-size: 17px; font-family: inherit">
+</div>
+<p class="cc-hand" style="margin: 36px 0 0; font-size: clamp(22px, 3vw, 32px); color: #F2B596; line-height: 1.6">「<span id="cc-idea-show">〇〇</span>」、一緒に作りましょう。</p>
+<div style="margin-top: 36px">
+<a href="https://lin.ee/nuYfsbB" style="display: inline-flex; align-items: center; gap: 10px; min-height: 60px; padding: 0 40px; border-radius: 999px; background: var(--accent); color: #FFFFFF; font-weight: 700; font-size: 18px; text-decoration: none">
+LINEで相談する
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</a>
+</div>
+<p style="margin: 24px 0 0; font-size: 15px; color: #F3EFE6"><span style="display: inline-block; padding: 2px 12px; margin-right: 8px; border-radius: 999px; background: var(--accent); color: #FFFFFF; font-weight: 700">基礎の2回は無料</span>全12回のうち、基礎学習の2回は無料。3回目からは月額5,000円（税込・月4回）</p>
+<p style="margin: 10px 0 0; font-size: 14px; color: #BDB5A8">講師：TOMONI 代表　菅原</p>
+</div>
+</section>
+</main>
+
+<footer style="padding: 32px clamp(16px, 4vw, 48px); background: #1E1C19; border-top: 1px solid #36322D; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: #BDB5A8">
+<span style="font-weight: 900; color: #F3EFE6">Claude Code 勉強会</span>
+<span>運営：TOMONI（ともに）</span>
+</footer>
+
+</div>
+<script>
+(function () {
+  var ACCENT = '#C94A1F';
+  function C(t) { return t < 0 ? 0 : (t > 1 ? 1 : t); }
+  function E(t) { return 1 - Math.pow(1 - t, 3); }
+  function W(p, a, b, c, d) { return Math.min(C((p - a) / (b - a)), 1 - C((p - c) / (d - c))); }
+  function $(id) { return document.getElementById(id); }
+
+  var hero = $('cc-hero'), ideas = $('ideas'), row = $('cc-row'), words = $('cc-words'), grid = $('cc-grid');
+  var sketch = $('sketch'), ui = $('ui'), bub = $('bub'), hint = $('hint');
+  var paths = sketch.querySelectorAll('path');
+  var scenes = [$('t0'), $('t1'), $('t2')];
+  var chapters = [$('c0'), $('c1'), $('c2')];
+  var notes = [$('n0'), $('n1'), $('n2')];
+  var wordEls = words.querySelectorAll('span');
+  var rings = grid.querySelectorAll('.sess path');
+  var nums = grid.querySelectorAll('.sess .num');
+
+  // ピン留めされた区間の中で、どこまでスクロールしたか（0〜1）
+  function progress(el) {
+    var r = el.getBoundingClientRect();
+    var vh = window.innerHeight || 800;
+    var d = r.height - Math.min(vh, 900);
+    return d > 0 ? C(-r.top / d) : 0;
+  }
+  function scene(el, op, y) {
+    el.style.opacity = op.toFixed(3);
+    el.style.transform = 'translateY(' + y.toFixed(1) + 'px)';
+  }
+
+  var raf = 0;
+  function update() {
+    raf = 0;
+    var vh = window.innerHeight || 800;
+    var vw = document.documentElement.clientWidth || window.innerWidth;
+
+    // 最初の画面：下書き → メモ → アプリ画面 → LINE通知
+    var p = progress(hero);
+    for (var i = 0; i < paths.length; i++) {
+      var a = 0.04 + i * 0.035;
+      paths[i].style.strokeDashoffset = (1 - E(C((p - a) / 0.09))).toFixed(3);
+    }
+    var t0 = 1 - C((p - 0.26) / 0.06);
+    var t1 = W(p, 0.32, 0.38, 0.6, 0.66);
+    var t2 = C((p - 0.68) / 0.06);
+    scene(scenes[0], t0, (1 - t0) * -24);
+    scene(scenes[1], t1, (1 - t1) * (p < 0.5 ? 24 : -24));
+    scene(scenes[2], t2, (1 - t2) * 24);
+    var ch = p < 0.32 ? 0 : (p < 0.66 ? 1 : 2);
+    for (var k = 0; k < 3; k++) chapters[k].style.opacity = ch === k ? 1 : 0.35;
+    notes[0].style.opacity = W(p, 0.38, 0.44, 0.7, 0.76).toFixed(3);
+    notes[1].style.opacity = W(p, 0.44, 0.5, 0.7, 0.76).toFixed(3);
+    notes[2].style.opacity = W(p, 0.5, 0.56, 0.7, 0.76).toFixed(3);
+    var u = E(C((p - 0.66) / 0.12));
+    sketch.style.opacity = (1 - u * 0.85).toFixed(3);
+    ui.style.opacity = u.toFixed(3);
+    ui.style.transform = 'scale(' + (0.94 + 0.06 * u).toFixed(3) + ')';
+    var b = C((p - 0.84) / 0.06);
+    bub.style.opacity = b.toFixed(3);
+    bub.style.transform = 'translateY(' + ((1 - b) * 16).toFixed(1) + 'px) scale(' + (0.85 + 0.15 * E(b)).toFixed(3) + ')';
+    hint.style.opacity = (1 - C(p / 0.05)).toFixed(3);
+
+    // 作れるもの：縦スクロールでカードが横に流れる
+    var g = progress(ideas);
+    var gw = Math.max(0, row.scrollWidth - vw);
+    row.style.transform = 'translateX(' + (-gw * g).toFixed(1) + 'px)';
+
+    // コンセプト：読み進めるのに合わせて文字が濃くなる
+    var wr = words.getBoundingClientRect();
+    var w = C((vh * 0.85 - wr.top) / (wr.height + vh * 0.35));
+    for (var j = 0; j < wordEls.length; j++) {
+      wordEls[j].style.color = (w * wordEls.length > j + 0.3) ? '#1E1C19' : '#CFC8BC';
+    }
+
+    // 全12回：番号を手書きの丸で順に囲む
+    var gr = grid.getBoundingClientRect();
+    var s = C((vh * 0.8 - gr.top) / (gr.height + vh * 0.1));
+    for (var n = 0; n < rings.length; n++) {
+      var on = C(s * 12.6 - n);
+      rings[n].style.strokeDashoffset = (1 - on).toFixed(3);
+      nums[n].style.color = on > 0.6 ? ACCENT : '#8A8276';
+    }
+  }
+  function onScroll() { if (!raf) raf = requestAnimationFrame(update); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  window.addEventListener('load', onScroll);
+  update();
+
+  // 申し込み欄：入力した内容をその場で表示
+  var input = $('cc-idea'), show = $('cc-idea-show');
+  input.addEventListener('input', function () { show.textContent = input.value.trim() || '〇〇'; });
+})();
+</script>
+</body>
+</html>
